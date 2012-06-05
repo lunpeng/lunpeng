@@ -1,38 +1,33 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
-gem 'rails', '3.2.1'
+gem 'rails', '3.0.9'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'simple_form', '1.5.1'
+gem 'jquery-rails', '1.0.14'
 
-gem 'sqlite3'
-gem 'mysql2', :group => :production
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer'
-
-  gem 'uglifier', '>= 1.0.3'
+platform :ruby do
+  gem 'mysql2', '~> 0.2.7'
+  gem 'pg'
+  gem 'sqlite3' 
+  gem 'unicorn'
 end
 
-gem 'jquery-rails'
+platforms :jruby do
+  gem 'activerecord-jdbc-adapter'
+  gem 'jruby-openssl'
+  gem 'jdbc-mysql', :require => false
+  gem 'jdbc-sqlite3', :require => false
+  gem 'jdbc-postgres', :require => false
+  gem 'trinidad'
+  gem 'thor'
+end
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
 
-# Use unicorn as the web server
-# gem 'unicorn'
 
-# Deploy with Capistrano
-# gem 'capistrano'
+# Bundle gems for the local environment. Make sure to
+# put test-only gems in this group so their generators
+# and rake tasks are available in development mode:
+group :development, :test do
 
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+end
